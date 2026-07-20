@@ -1,5 +1,6 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
+import PublicRoute from './components/PublicRoute'
 import { AuthProvider } from './context/AuthContext'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
@@ -12,9 +13,34 @@ export default function App() {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/verify-otp" element={<VerifyOtp />} />
-          <Route path="/login" element={<Login />} />
+          
+          {/* PUBLIC-ONLY ROUTES (Redirect to /dashboard if logged in) */}
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/verify-otp"
+            element={
+              <PublicRoute>
+                <VerifyOtp />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+
+          {/* PROTECTED ROUTES (Redirect to /login if logged out) */}
           <Route
             path="/dashboard"
             element={
@@ -23,6 +49,8 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+
+          {/* FALLBACK ROUTE */}
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </AuthProvider>

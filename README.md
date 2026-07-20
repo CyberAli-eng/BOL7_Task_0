@@ -101,3 +101,5 @@ npm run dev              # http://localhost:5173
 7. Click **Logout** — cookies are cleared and you're redirected to login.
 
 ---
+
+

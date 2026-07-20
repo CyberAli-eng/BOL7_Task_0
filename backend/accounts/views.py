@@ -158,3 +158,4 @@ class LogoutView(APIView):
         response = Response({'message': 'Logged out successfully.'}, status=status.HTTP_200_OK)
         clear_auth_cookies(response)
         return response
+
