@@ -1,0 +1,64 @@
+Django and React Authentication Task
+Create a basic authentication system using:
+Django
+Django REST Framework
+React
+JWT authentication
+Requirements
+1. User Registration
+Create a registration page with:
+Name
+Email
+Password
+Confirm password
+After registration, send a 6-digit OTP to the user's email.
+2. Email OTP Verification
+Create an OTP verification page.
+The user will enter:
+Email
+OTP
+Verify the OTP and activate the user account.
+The OTP should expire after 5 minutes.
+3. User Login
+Create a login page with:
+Email
+Password
+Allow login only after email OTP verification.
+4. JWT Authentication
+After successful login, generate:
+Access token
+Refresh token
+Save both JWT tokens in HTTP-only cookies.
+Do not save tokens in localStorage or sessionStorage.
+5. User Profile
+Create a protected profile or dashboard page.
+Display:
+User name
+User email
+Email verification status
+Only logged-in users should be able to access this page.
+6. Refresh Token
+Create an API to generate a new access token using the refresh token stored in cookies.
+7. Logout
+Create a logout API that removes the access and refresh token cookies.
+Required APIs
+POST /api/register/
+POST /api/verify-otp/
+POST /api/resend-otp/
+POST /api/login/
+POST /api/token/refresh/
+GET  /api/profile/
+POST /api/logout/
+Expected Authentication Flow
+Register
+→ Receive email OTP
+→ Verify OTP
+→ Login
+→ Save JWT tokens in cookies
+→ Open protected dashboard
+→ Logout
+Deliverables
+Django backend code
+React frontend code
+API documentation or Postman collection
+Project setup instructions

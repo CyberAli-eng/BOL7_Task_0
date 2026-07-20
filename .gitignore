@@ -1,0 +1,20 @@
+# Node dependencies & builds
+node_modules/
+dist/
+build/
+
+# Python / Django runtime files
+*.pyc
+*__pycache__/
+*.sqldiff
+db.sqlite3
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment files with private keys
+.env
+.env.local
