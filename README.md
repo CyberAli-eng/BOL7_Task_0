@@ -1,9 +1,6 @@
 # Django + React JWT Authentication System
 
-A full authentication system: registration with email OTP verification,
-login, JWT access/refresh tokens stored in **HTTP-only cookies** (never in
-`localStorage`/`sessionStorage`), a protected dashboard, token refresh, and
-logout.
+Live Link: https://bol-7-task-0.vercel.app
 
 ```
 project/
@@ -104,17 +101,3 @@ npm run dev              # http://localhost:5173
 7. Click **Logout** — cookies are cleared and you're redirected to login.
 
 ---
-
-## Notes / production considerations
-
-- SQLite is used for simplicity; swap `DATABASES` in `backend/config/settings.py`
-  for Postgres/MySQL in production.
-- If frontend and backend are deployed on different domains, set
-  `COOKIE_SAMESITE=None` and `COOKIE_SECURE=True` (requires HTTPS) so
-  cross-site cookies are sent.
-- CSRF: since JWT cookie auth (not Django session auth) is used for the API,
-  DRF's `SessionAuthentication` is not in `DEFAULT_AUTHENTICATION_CLASSES`,
-  so CSRF tokens are not required for these endpoints.
-- Consider rate-limiting `/api/register/`, `/api/login/`, and
-  `/api/resend-otp/` in production to prevent abuse (e.g. `django-ratelimit`
-  or DRF throttling classes).
